@@ -1,22 +1,13 @@
-"""
-URL configuration for Blog project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# admin est un module qui va nous permettre d'avoir des outils d'administration qui vont nouspermettre de gerer notre site
 from django.contrib import admin
+# path est le module qu'on utilise pour définir des chemins
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
+    # path est composé premierement d'un chemin vers une vue, et en duexième parametre on a la fonction qui sera executé
+    # lorsqu'on va visiter le chemin en premier parametre, sans oublier ques les vues ce sont des fonction pour django
     path('admin/', admin.site.urls),
+    path('', views.home_view)
 ]
