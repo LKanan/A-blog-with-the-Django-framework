@@ -1,0 +1,19 @@
+{#Pour lier un fichier html à un template on utilise les tags de template puis on utilise le mot clé extend et entre simple #}
+{#cote on met le nom du fichier template, django lui meme se chargera de reconaitre son emplacement vu qu'on lui a deja#}
+{#passé le dossier qui le contient dans le fichier settings.py#}
+{#En faisant ceci c'est comme si on venait de fusionner les deux fichier mais le fichier qui contiendra l'autre c'est celui#}
+{#en extend du coup, dans ce fichier en extend on doit prevoir une place où va se situer le code de cette page qui recoit #}
+{#l'extend #}
+{% extends 'template_base.html' %}
+{#Pour signifier qu'on va recuperer le code de ce fichier et le mettre dans le fichier en extend qui est le template on va#}
+{#prendre tous le code de ce fichier et le mettre dans un block de tags de template et lui donner le meme nom qu'on a donné #}
+{#dans le fichier en extend (le fichier template), comme ca quand ils vont fusionner ce code ira à l'endroit prevu dans le #}
+{#fichier du template #}
+{% block titre %} Page des articles {% endblock %}
+{% block contenu %}
+    <h1>Les articles</h1>
+    <ul>
+        <li>Article 1</li>
+        <li>Article 2</li>
+    </ul>
+{% endblock %}

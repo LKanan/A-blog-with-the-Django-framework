@@ -1,0 +1,27 @@
+{#Ceci est un template, ce qui veut dire qu'il sera commun à certaine pages qui en auront besoin#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+     <title>{% block titre %}{% endblock %}</title>
+</head>
+<body>
+<ul style="list-style: None">
+    <li style="display: inline-block; padding: 10px 20px;">
+        {# Dans le href on ecrit les liens ou les chemins qu'on a defini dans le fichier urls.py, il se chargera lui meme d'aller chercher dans le serveur où menent ces chemins#}
+        <a href="/">Accueil</a>
+    </li>
+    <li style="display: inline-block; padding: 10px 20px;">
+        <a href="/articles/">Articles</a>
+    </li>
+    <li style="display: inline-block; padding: 10px 20px;">
+        <a href="/contact/">Contact</a>
+    </li>
+</ul>
+{#On appelle ces tags des tags de template, pour créer un block qui contiendra un autre code html on fait#}
+{#{% block nom_du_block %} {% endblock %}#}
+{#Le nom donné à ce block est celui qui doit etre donné aux block qui viendront à cette place dans le codes des différentes
+pages qui feront appel à ce template#}
+{%  block contenu %} {% endblock %}
+</body>
+</html>

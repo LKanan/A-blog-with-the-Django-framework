@@ -3,11 +3,22 @@ from django.contrib import admin
 # path est le module qu'on utilise pour définir des chemins
 from django.urls import path
 
+# views est notre fichier qui va contenir nos vues (fonctions)
 from . import views
 
 urlpatterns = [
     # path est composé premierement d'un chemin vers une vue, et en duexième parametre on a la fonction qui sera executé
     # lorsqu'on va visiter le chemin en premier parametre, sans oublier ques les vues ce sont des fonction pour django
     path('admin/', admin.site.urls),
-    path('', views.home_view)
+    # la chaine de caractères vide à la place du chemin signifie que c'est la reponse lorrqu'on ecrit le l'url par defaut
+    # de notre site et donc l'url contenant à la fin le nom de domaine ou l'adresse IP du serveur, ce qui represente la
+    # barre apres le l'adresse IP du serveur ou le nom de domaine d'un site (/)
+    # Le troisième parametre name de path, bien qu'il ne soit pas obligatoir, il permet quand meme de simplifier le code
+    # dans la mesure où on voudrait change le mot qui represente le chemin, par exemple là où on a contact/ on voudrait
+    # changer en contactez_nous/, si on fait ca on doit changer dans toutes les page html où on a utilisé ce chemin,
+    # alors que s'il y a  un nom, ca nous faciliterai la tache, on pourra seulement changer dans le fichiers des urls mais
+    # le nom de l'url restera le meme dans les pages html qui ont utilisé ce lien
+    path('', views.home_view, name='home'),
+    path('contact/', views.contact_view),
+    path('articles/', views.articles_views),
 ]
