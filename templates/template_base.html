@@ -8,20 +8,20 @@
 <body>
 <ul style="list-style: None">
     <li style="display: inline-block; padding: 10px 20px;">
-        {# Dans le href on ecrit les liens ou les chemins qu'on a defini dans le fichier urls.py, il se chargera lui meme d'aller chercher dans le serveur où menent ces chemins#}
-        <a href="/">Accueil</a>
+{#         Dans le href on ecrit les liens ou les chemins qu'on a defini dans le fichier urls.py, il se chargera lui #}
+{#        meme d'aller chercher dans le serveur où menent ces chemins#}
+{#        on peut aussi utiliser des tags de template en indiquant le mot clé url pour le notifier à django ensuite on met #}
+{#        la chaine de ceract-re correspondant au nom de l'url dans le ficchier url.py#}
+        <a href="{% url 'home' %}">Accueil</a>
     </li>
     <li style="display: inline-block; padding: 10px 20px;">
-        <a href="/articles/">Articles</a>
-    </li>
-    <li style="display: inline-block; padding: 10px 20px;">
-        <a href="/contact/">Contact</a>
+        <a href="{% url 'contact' %}">Contact</a>
     </li>
 </ul>
 {#On appelle ces tags des tags de template, pour créer un block qui contiendra un autre code html on fait#}
 {#{% block nom_du_block %} {% endblock %}#}
-{#Le nom donné à ce block est celui qui doit etre donné aux block qui viendront à cette place dans le codes des différentes
-pages qui feront appel à ce template#}
+{#Le nom donné à ce block est celui qui doit etre donné aux block qui viendront à cette place dans le codes des différentes#}
+{#pages qui feront appel à ce template#}
 {%  block contenu %} {% endblock %}
 </body>
 </html>

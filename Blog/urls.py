@@ -1,7 +1,8 @@
 # admin est un module qui va nous permettre d'avoir des outils d'administration qui vont nouspermettre de gerer notre site
 from django.contrib import admin
 # path est le module qu'on utilise pour définir des chemins
-from django.urls import path
+# include est un module qui va nous permettre d'importer des urls vernant des nos différentes applications
+from django.urls import path, include
 
 # views est notre fichier qui va contenir nos vues (fonctions)
 from . import views
@@ -19,6 +20,11 @@ urlpatterns = [
     # alors que s'il y a  un nom, ca nous faciliterai la tache, on pourra seulement changer dans le fichiers des urls mais
     # le nom de l'url restera le meme dans les pages html qui ont utilisé ce lien
     path('', views.home_view, name='home'),
-    path('contact/', views.contact_view),
-    path('articles/', views.articles_views),
+    path('contact/', views.contact_view, name='contact'),
+    # Lorsque qu'on fait appelle aux urls venants des applications, leurs chemins sont combinés, genre le chemin donné
+    # dans le fichier urls.py de notre application princiapale est celui qui se colle directement après l'adresse IP de notre serveur
+    # après ca on ajoute maintenant le chemin créé dans le fichier urls.py de notre l'application créée
+    # (le projet) ex: adrees_IP/utilisateurs/url_de_application
+    path('utilisateurs/', include('utilisateur.urls')),
+    path('articles/', include('articles.urls'))
 ]

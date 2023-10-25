@@ -4,7 +4,7 @@
 {#En faisant ceci c'est comme si on venait de fusionner les deux fichier mais le fichier qui contiendra l'autre c'est celui#}
 {#en extend du coup, dans ce fichier en extend on doit prevoir une place où va se situer le code de cette page qui recoit #}
 {#l'extend #}
-{% extends 'template_base.html' %}
+{% extends 'articles/template_base.html' %}
 {#Pour signifier qu'on va recuperer le code de ce fichier et le mettre dans le fichier en extend qui est le template on va#}
 {#prendre tous le code de ce fichier et le mettre dans un block de tags de template et lui donner le meme nom qu'on a donné #}
 {#dans le fichier en extend (le fichier template), comme ca quand ils vont fusionner ce code ira à l'endroit prevu dans le #}
@@ -12,8 +12,16 @@
 {% block titre %} Page des articles {% endblock %}
 {% block contenu %}
     <h1>Les articles</h1>
-    <ul>
-        <li>Article 1</li>
-        <li>Article 2</li>
-    </ul>
+    {#    Pour utiliser les mots clés de python avec des tags de templates on commence par mettre dans un fichier html on le #}
+    {#    dans le tag ouvrant on met le mot clé et dans le tag fermant on met {% endmot_clé_utilisé %}#}
+    {#    articles_db est la variable recuperée lorsque on a utilisé le parametre context pour la vue qui appelle articles.html #}
+    {% for article in articles_db %}
+        {#        Pour utiliser une variable dans le code html avec les tags de template, au lieu d'utiliser une accolade et un %#}
+        {#        on va plutot utiliser deux accolades et on y met le nom de la variable #}
+        <h2>{{ article.titre }}</h2>
+        <ul>
+            <li>{{ article.contenu }}</li>
+            <li>{{ article.date_publication }}</li>
+        </ul>
+    {% endfor %}
 {% endblock %}
