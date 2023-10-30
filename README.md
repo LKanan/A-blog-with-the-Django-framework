@@ -11,6 +11,7 @@ lancer le serveur interne de django avec l'adresse IP http://127.0.0.1:8000/, le
 et les urls des applications commencent par
  - /utilisateurs/ et 
  - /articles/
+
 Ex: http://127.0.0.1:8000/utilisateurs/ on fait ceci dans un navigateur pour voir le resultat apres avoir lancer le 
 server Django
 
